@@ -1,2 +1,2 @@
 tests:
-	R -e 'library(blabla)'
+	R -e 'library(rjags)'
