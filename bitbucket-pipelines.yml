@@ -1,9 +1,8 @@
-image: rocker/r-ubuntu:18.04
+image: islasgeci/ejemplo-rjags:d987
 
 pipelines:
   pull-requests:
     '**':
       - step:
           script:
-            - apt-get update && apt-get install --yes r-cran-rjags
             - make
