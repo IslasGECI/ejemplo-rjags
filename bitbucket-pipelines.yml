@@ -1,0 +1,8 @@
+image: islasgeci/ejemplo-rjags:d987
+
+pipelines:
+  pull-requests:
+    '**':
+      - step:
+          script:
+            - make

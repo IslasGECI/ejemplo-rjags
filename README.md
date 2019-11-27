@@ -1,1 +1,1 @@
-jags
+# Ejemplo sobre rjags
