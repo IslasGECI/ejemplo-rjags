@@ -14,9 +14,20 @@ dev.off()
 
 data <- data.frame(x,yaleatoria)
 model <- lm(yaleatoria ~ x, data)
+
 png('myPlot2.png')
 plot(x, yaleatoria, type = "p", col = "blue")
 abline(model)
 dev.off()
-summary(model)
+
+interceptModel <- coefficients(model)[1]
+slopeModel <- coefficients(model)[2]
+
+library(ggplot2)
+png('myPlot3.png')
+ggplot(data, aes(x=x,y=yaleatoria)) +
+  geom_point() +
+  geom_abline(slope = slopeModel,intercept = interceptModel,color="red")+
+  theme_classic()
+dev.off()
 
