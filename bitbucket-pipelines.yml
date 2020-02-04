@@ -1,4 +1,4 @@
-image: islasgeci/ejemplo-rjags:d987
+image: islasgeci/ejemplo-rjags:beeb
 
 pipelines:
   pull-requests:
