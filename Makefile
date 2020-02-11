@@ -1,3 +1,5 @@
+all: tests pngPlotLinearRegression.png pngPlotHistogram.png
+
 pngPlotLinearRegression.png:
 	src/generate_linear_data.R
 
