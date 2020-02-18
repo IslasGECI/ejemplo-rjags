@@ -18,6 +18,6 @@ vote_jags <- jags.model(textConnection(vote_model),
              inits = list(.RNG.name = "base::Wichmann-Hill", .RNG.seed = 100))
 # SIMULATE the posterior
 vote_sim <- coda.samples(model = vote_jags, variable.names = c("p"), n.iter = 1000)
-png("reports/figures/pngPlotHistogram.png")
+png("reports/figures/histogram.png")
 plot(vote_sim, trace = FALSE)
 dev.off()
