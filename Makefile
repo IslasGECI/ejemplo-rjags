@@ -6,7 +6,7 @@ all: tests $(pngPlots)
 
 reports/figures/linear_regression.png:
 	mkdir --parents $(@D) 
-	src/generate_linear_data.R
+	src/generate_linear_data.R $@
 
 reports/figures/histogram.png:
 	mkdir --parents $(@D)

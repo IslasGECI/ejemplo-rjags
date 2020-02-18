@@ -3,6 +3,8 @@
 # Genera una linea recta con ruido
 
 library(ggplot2)
+
+out_filename <- commandArgs(trailingOnly = TRUE)
 slope     <- 2
 intercept <- 5 
 domain    <- c(1:10)
@@ -13,7 +15,7 @@ data        <- data.frame(domain, noisy_range)
 model       <- lm(noisy_range ~ domain, data)
 intercept_model <- coefficients(model)[1]
 slope_model     <- coefficients(model)[2]
-png("reports/figures/linear_regression.png")
+png(out_filename)
 ggplot(data, aes(x = domain, y = noisy_range)) +
        geom_point() +
        theme_classic() +
