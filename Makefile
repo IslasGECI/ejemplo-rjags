@@ -2,7 +2,7 @@
 # ===========================================================================
 pngPlots = reports/figures/linear_regression.png reports/figures/histogram.png
 
-.PHONY: all clean tests
+all: $(pngPlots)
 
 # II. Declaración de las variables
 # ===========================================================================
@@ -15,11 +15,13 @@ pngPlots = reports/figures/linear_regression.png reports/figures/histogram.png
 # IV. Reglas para construir las dependencias de los objetivos principales
 # ===========================================================================
 
+$(word 1, $(pngPlots)): src/generate_linear_data.R 
+	if [ ! -d $(@D) ]; then mkdir --parents $(@D); fi
 	src/generate_linear_data.R $@
 
-reports/figures/histogram.png:
-	mkdir --parents $(@D)
-	src/play_rjags_example.R
+$(word 2, $(pngPlots)): src/generate_linear_data.R 
+	if [ ! -d reports/figures ]; then mkdir --parents reports/figures; fi
+	src/play_rjags_example.R $(word 2, $(pngPlots))
 
 # V. Reglas del resto de los phonies
 # ===========================================================================
