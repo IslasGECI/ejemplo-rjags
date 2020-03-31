@@ -16,11 +16,11 @@ all: $(pngPlots)
 # ===========================================================================
 
 $(word 1, $(pngPlots)): src/generate_linear_data.R 
-	if [ ! -d $(@D) ]; then mkdir --parents $(@D); fi
+	mkdir --parents $(@D)
 	src/generate_linear_data.R $@
 
 $(word 2, $(pngPlots)): src/generate_linear_data.R 
-	if [ ! -d reports/figures ]; then mkdir --parents reports/figures; fi
+	mkdir --parents reports/figures
 	src/play_rjags_example.R $(word 2, $(pngPlots))
 
 # V. Reglas del resto de los phonies
