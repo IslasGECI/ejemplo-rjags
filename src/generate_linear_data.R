@@ -9,6 +9,8 @@ slope     <- 2
 intercept <- 5 
 domain    <- c(1:10)
 range     <- (slope * domain) + intercept
+seed_number <- 5
+set.seed(seed_number)
 noise     <- runif(10, -2, 2)
 noisy_range <- range + noise
 data        <- data.frame(domain, noisy_range)
@@ -21,3 +23,8 @@ ggplot(data, aes(x = domain, y = noisy_range)) +
        theme_classic() +
        geom_abline(slope = slope_model, intercept = intercept_model, color="red") 
 dev.off()
+table <- data.frame(domain,noisy_range)
+output_table_directory <- "reports/tables/"
+dir.create(output_table_directory)
+out_filename_table <- "resultados.csv"
+write.csv(table, paste0(output_table_directory,out_filename_table))
