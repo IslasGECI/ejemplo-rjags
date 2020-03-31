@@ -1,8 +1,8 @@
-image: islasgeci/ejemplo-rjags:d987
+image: islasgeci/ejemplo-rjags:latest
 
 pipelines:
-  pull-requests:
-    '**':
+  custom:
+    manual:
       - step:
           script:
             - make
