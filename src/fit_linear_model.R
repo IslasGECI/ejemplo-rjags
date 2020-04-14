@@ -4,7 +4,9 @@
 
 library(ggplot2)
 library(rjags)
-
+out_filename <- "reports/figures/fitted_model.png"
+slope     <- 2
+intercept <- 5 
 linear_model <- "model{
     # Likelihood:
     for (i in 1:n_data) {
@@ -21,8 +23,17 @@ linear_jags <- jags.model(textConnection(linear_model),
 linear_sim <- coda.samples(model = linear_jags,
                            variable.names = c("slope","intercept"), 
                            n.iter = 1000)
+predicted_slope <- median(linear_sim[[1]][,"slope"])
+predicted_intercept <- median(linear_sim[[1]][,"intercept"])
+png(out_filename)
+ggplot(resultados, aes(x = domain, y = noisy_range)) +
+       geom_point() +
+       theme_classic() +
+       geom_abline(slope = predicted_slope, intercept = predicted_intercept, color="blue") +
+       geom_abline(slope = slope, intercept = intercept, color="red")
+dev.off()
+
 summary(linear_sim)
 png("reports/figures/histogram_rjags_linear_model.png")
 plot(linear_sim, trace = FALSE)
 dev.off()
-
