@@ -1,6 +1,6 @@
 # I. Definición del _phony_ *all* que enlista todos los objetivos principales
 # ===========================================================================
-all: reports/figures/linear_regression.png reports/figures/histogram.png reports/tables/noisy_data.csv reports/figures/fitted_model.png
+all: reports/figures/linear_regression.png reports/figures/histogram.png reports/tables/noisy_data.csv reports/figures/fitted_model.png tests
 
 
 # II. Declaración de las variables
@@ -17,7 +17,7 @@ pngFittedModel = \
 # III. Reglas para construir los objetivos principales
 # ===========================================================================
 
-reports/figures/linear_regression.png: src/plot_linear_data.R
+reports/figures/linear_regression.png: src/plot_linear_data.R $(csvNoisyData)
 	mkdir --parents $(@D)
 	$< \
 	--file $(csvNoisyData) \
@@ -32,7 +32,7 @@ $(csvNoisyData): src/make_noisy_data.R
 	$< \
 	--out $@
 
-$(pngFittedModel) : src/plot_linear_model_rjags.R $(noisy_data)
+$(pngFittedModel) : src/plot_linear_model_rjags.R $(csvNoisyData)
 	mkdir --parents $(@D)
 	$< \
 	--file $(csvNoisyData) \
@@ -49,7 +49,6 @@ $(pngFittedModel) : src/plot_linear_model_rjags.R $(noisy_data)
 
 tests:
 	R -e "testthat::test_dir('tests/testthat/', report = 'summary', stop_on_failure = TRUE)"
-	R -e 'library(rjags)'
 
 # Elimina los residuos de LaTeX
 
