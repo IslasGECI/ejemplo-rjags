@@ -45,8 +45,10 @@ $(pngFittedModel) : src/plot_linear_model_rjags.R $(noisy_data)
 
 # V. Reglas del resto de los phonies
 # ===========================================================================
+.PHONY: all clean tests
 
 tests:
+	R -e "testthat::test_dir('tests/testthat/', report = 'summary', stop_on_failure = TRUE)"
 	R -e 'library(rjags)'
 
 # Elimina los residuos de LaTeX
