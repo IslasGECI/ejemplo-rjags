@@ -16,7 +16,7 @@ linear_model <- "model{
 }"
 linear_jags <- jags.model(textConnection(linear_model), 
              data = list(x=resultados$domain, y=resultados$noisy_range, n_data=nrow(resultados)),
-             inits = list(.RNG.name = "base::Wichmann-Hill", .RNG.seed = 5))
+             inits = list(.RNG.name = "base::Wichmann-Hill", .RNG.seed = 10))
 linear_sim <- coda.samples(model = linear_jags,
                            variable.names = c("slope","intercept"), 
                            n.iter = 1000)
