@@ -1,29 +1,30 @@
 #!/usr/bin/env Rscript
 #
 # Grafica una regresión lineal con técnicas bayesianas
-source("src/functions/make_fit.R")
 library(ggplot2)
 library(optparse)
 library(jsonify)
 option_list = list(
 	make_option(c("-f", "--file"), type="character", default=NULL,
                   help="dataset file name", metavar="character"),
+	make_option(c("-r", "--results"), type="character", default=NULL,
+                  help="results file name", metavar="character"),
 	make_option(c("-o", "--out"), type="character", default=NULL,
                   help="output file name", metavar="character")
 );
 opt_parser <- OptionParser(option_list=option_list);
 opt <- parse_args(opt_parser);
-in_file <- opt$file
-out_filename <- opt$out
+in_data_filename <- opt$file
+in_json_filename <- opt$results
+out_png_filename <- opt$out
 slope     <- 2
 intercept <- 5 
-resultados <- read.csv(in_file)
-bayesian <- make_fit(resultados)
-predicted_intercept <- as.numeric(bayesian[2])
-predicted_slope <- as.numeric(bayesian[4])
-write(to_json(list(predicted_intercept=predicted_intercept,predicted_slope=predicted_slope)),"reports/non-tabular/resultado.json")
-png(out_filename)
-ggplot(resultados, aes(x = domain, y = noisy_range)) +
+data <- read.csv(in_data_filename)
+results <- from_json(in_json_filename)
+predicted_intercept <- as.numeric(results[1])
+predicted_slope <- as.numeric(results[2])
+png(out_png_filename)
+ggplot(data, aes(x = domain, y = noisy_range)) +
        geom_point() +
        theme_classic() +
        geom_abline(slope = predicted_slope, intercept = predicted_intercept, color="blue") +
