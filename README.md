@@ -1,11 +1,12 @@
 # Ejemplo sobre rjags
 
 ## Historial de este repositorio
-- Genera una nube de puntos lineales de una pendiente y una ordenada fijas
-- Agrega ruido a dichos puntos
-- Ajusta un modelo lineal para la nube de puntos y la grafica
-- Realiza un histograma de un ejmplo con rjags
+- Genera una nube de puntos lineales de una pendiente y una ordenada al origen fijas
+- Agrega ruido a los puntos lineales
+- Ajusta un modelo lineal para la nube de puntos con ruido y la gráfica del ajuste
+- Realiza un histograma de un ejemplo de DataCamp con rjags
 
 ## Pendientes
+- Crear una pendiente y una ordenada con distribucion uniforme.
 - Ajustar una linea recta con técnicas bayesianas.
-- Crear una pendiente y una ordenada con distribucion uniforme. 
+- Agregar pruebas para la pendiente y ordenada al origen obtenidas con rjags.
