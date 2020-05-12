@@ -4,6 +4,7 @@
 source("src/functions/make_fit.R")
 library(ggplot2)
 library(optparse)
+library(jsonify)
 option_list = list(
 	make_option(c("-f", "--file"), type="character", default=NULL,
                   help="dataset file name", metavar="character"),
@@ -20,6 +21,7 @@ resultados <- read.csv(in_file)
 bayesian <- make_fit(resultados)
 predicted_intercept <- as.numeric(bayesian[2])
 predicted_slope <- as.numeric(bayesian[4])
+write(to_json(list(predicted_intercept=predicted_intercept,predicted_slope=predicted_slope)),"reports/non-tabular/resultado.json")
 png(out_filename)
 ggplot(resultados, aes(x = domain, y = noisy_range)) +
        geom_point() +
