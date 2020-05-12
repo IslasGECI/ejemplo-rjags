@@ -4,7 +4,6 @@
 
 library(rjags)
 make_fit <- function(resultados){
-
 linear_model <- "model{
     # Likelihood:
     for (i in 1:n_data) {
@@ -16,7 +15,8 @@ linear_model <- "model{
     intercept ~ dunif(0, 10) 
 }"
 linear_jags <- jags.model(textConnection(linear_model), 
-             data = list(x=resultados$domain, y=resultados$noisy_range, n_data=nrow(resultados)))
+             data = list(x=resultados$domain, y=resultados$noisy_range, n_data=nrow(resultados)),
+             inits = list(.RNG.name = "base::Wichmann-Hill", .RNG.seed = 5))
 linear_sim <- coda.samples(model = linear_jags,
                            variable.names = c("slope","intercept"), 
                            n.iter = 1000)
