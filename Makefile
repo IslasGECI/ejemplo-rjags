@@ -64,6 +64,7 @@ $(jsonFittedModel): src/make_results.R $(csvNoisyData)
 
 tests:
 	R -e "testthat::test_dir('tests/testthat/', report = 'summary', stop_on_failure = TRUE)"
+	R -e 'library(covr)'
 
 # Elimina los residuos de LaTeX
 
