@@ -1,8 +1,9 @@
 # I. Definición del _phony_ *all* que enlista todos los objetivos principales
 # ===========================================================================
-all: reports/non-tabular/results.json reports/figures/linear_regression.png \
-	reports/figures/histogram.png reports/tables/noisy_data.csv reports/figures/fitted_model.png \
-	tests
+all: \
+	tests \
+	reports/non-tabular/results.json reports/figures/linear_regression.png \
+	reports/figures/histogram.png reports/tables/noisy_data.csv reports/figures/fitted_model.png
 
 define checkDirectories
 mkdir --parents $(@D)
@@ -62,7 +63,7 @@ $(jsonFittedModel): src/make_results.R $(csvNoisyData)
 # ===========================================================================
 .PHONY: all clean tests
 
-tests:
+tests: $(csvNoisyData)
 	R -e "testthat::test_dir('tests/testthat/', report = 'summary', stop_on_failure = TRUE)"
 	R -e 'library(covr)'
 
