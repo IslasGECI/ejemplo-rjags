@@ -28,7 +28,7 @@ jsonFittedModel = \
 reports/figures/linear_regression.png: src/plot_linear_data.R $(csvNoisyData)
 	$(checkDirectories)
 	$< \
-	--file $(csvNoisyData) \
+	--file $(word 2, $^) \
 	--out $@
 
 reports/figures/histogram.png: src/play_rjags_example.R 
@@ -43,15 +43,15 @@ $(csvNoisyData): src/make_noisy_data.R
 $(pngFittedModel): src/plot_linear_model_rjags.R $(csvNoisyData) $(jsonFittedModel)
 	$(checkDirectories)
 	$< \
-	--file $(csvNoisyData) \
-	--results $(jsonFittedModel) \
-	--out $(pngFittedModel)
+	--file $(word 2, $^) \
+	--results $(word 3, $^) \
+	--out $@
 
 $(jsonFittedModel): src/make_results.R $(csvNoisyData)
 	$(checkDirectories)
 	$< \
-	--file $(csvNoisyData) \
-	--out $(jsonFittedModel)
+	--file $(word 2, $^) \
+	--out $@
 
 # IV. Reglas para construir las dependencias de los objetivos principales
 # ===========================================================================
