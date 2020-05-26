@@ -7,6 +7,6 @@
 - Realiza un histograma de un ejemplo de DataCamp con rjags
 
 ## Pendientes
-- Crear una pendiente y una ordenada con distribucion uniforme.
+- Crear una pendiente y una ordenada con distribución uniforme.
 - Ajustar una linea recta con técnicas bayesianas.
 - Agregar pruebas para la pendiente y ordenada al origen obtenidas con rjags.
