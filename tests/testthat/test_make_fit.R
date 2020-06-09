@@ -1,6 +1,7 @@
-source("../../src/functions/make_fit.R")
+setwd("/workspaces/ejemplo-rjags")
+source("src/functions/make_fit.R")
 
-in_file <- "../../reports/tables/noisy_data.csv"
+in_file <- "reports/tables/noisy_data.csv"
 results <- read.csv(in_file)
 bayesian_fit <- make_fit(results)
 test_that('ajuste lineal', {
