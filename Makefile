@@ -2,6 +2,7 @@
 # ===========================================================================
 all: \
 	tests \
+	coverage \
 	reports/non-tabular/results.json reports/figures/linear_regression.png \
 	reports/figures/histogram.png reports/tables/noisy_data.csv reports/figures/fitted_model.png
 
@@ -61,11 +62,14 @@ $(jsonFittedModel): src/make_results.R $(csvNoisyData)
 
 # V. Reglas del resto de los phonies
 # ===========================================================================
-.PHONY: all clean tests
+.PHONY: all clean tests coverage
 
 tests: $(csvNoisyData)
 	R -e "testthat::test_dir('tests/testthat/', report = 'summary', stop_on_failure = TRUE)"
-	R -e 'library(covr)'
+
+coverage: 
+	R -e "library(testthat)" \
+      -e "covr::file_coverage('src/functions/make_fit.R','tests/testthat/test_make_fit.R')"
 
 # Elimina los residuos de LaTeX
 
