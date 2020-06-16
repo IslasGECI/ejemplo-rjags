@@ -1,4 +1,4 @@
-image: islasgeci/ejemplo-rjags:latest
+image: islasgeci/ejemplo-rjags:18b7
 
 pipelines:
   custom:
