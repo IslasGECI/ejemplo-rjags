@@ -5,4 +5,5 @@ RUN apt-get update && apt-get install --yes \
     libxml2-dev \
     r-cran-rjags
 RUN R -e "install.packages(c('covr','devtools','jsonify','optparse','testthat','tidyverse'), repos='http://cran.rstudio.com')"
+RUN R -e "devtools::install_github('klutometis/roxygen', upgrade = FALSE)"
 CMD ["make"]
