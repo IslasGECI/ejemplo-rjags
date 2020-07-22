@@ -1,8 +1,5 @@
-#!/usr/bin/env Rscript
-#
-# Funcion que predice valores de una regresión lineal con técnicas bayesianas
-
 library(rjags)
+#' @export
 make_fit <- function(resultados){
 linear_model <- "model{
     # Likelihood:
