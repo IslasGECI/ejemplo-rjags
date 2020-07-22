@@ -1,4 +1,6 @@
+#' @import rjags
 library(rjags)
+
 #' @export
 make_fit <- function(resultados){
 linear_model <- "model{

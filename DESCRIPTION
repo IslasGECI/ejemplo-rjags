@@ -8,6 +8,7 @@ Authors@R:
            email = "genaro.velazquez@islas.org.mx"
            )
 Description: Ajusta una línea recta usando rjags
+Imports: rjags
 License: GPL-3
     pick a license
 Encoding: UTF-8

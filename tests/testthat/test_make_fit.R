@@ -1,5 +1,5 @@
 setwd("/workspaces/ejemplo-rjags")
-source("src/functions/make_fit.R")
+library(geci.rjags)
 
 in_file <- "reports/tables/noisy_data.csv"
 results <- read.csv(in_file)
