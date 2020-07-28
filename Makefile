@@ -2,13 +2,7 @@
 # ===========================================================================
 all: \
 	tests \
-	coverage \
-	reports/non-tabular/results.json reports/figures/linear_regression.png \
-	reports/figures/histogram.png reports/tables/noisy_data.csv reports/figures/fitted_model.png
-
-define checkDirectories
-mkdir --parents $(@D)
-endef
+	coverage
 
 # II. Declaración de las variables
 # ===========================================================================
