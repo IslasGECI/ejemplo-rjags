@@ -1,4 +1,4 @@
-setwd("/workspaces/ejemplo-rjags")
+setwd("/workdir")
 library(geci.rjags)
 
 in_file <- "reports/tables/noisy_data.csv"
