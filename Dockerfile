@@ -1,4 +1,6 @@
 FROM r-base:4.0.2
+WORKDIR /workdir
+COPY . /workdir
 RUN apt-get update && apt-get install --yes \
     libcurl4-openssl-dev \
     libssl-dev \
