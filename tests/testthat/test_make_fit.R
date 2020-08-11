@@ -1,7 +1,7 @@
 setwd("/workdir")
 library(geci.rjags)
 
-in_file <- "tests/data_tests/noisy_data.csv"
+in_file <- "tests/data/noisy_data.csv"
 results <- read.csv(in_file)
 bayesian_fit <- make_fit(results)
 test_that('ajuste lineal', {
