@@ -11,7 +11,7 @@ make_fit <- function(resultados) {
     }
     # Prior model for slope and intercept
     slope ~ dunif(0, 10)
-    intercept ~ dunif(0, 10) 
+    intercept ~ dunif(0, 10)
 }"
   linear_jags <- jags.model(textConnection(linear_model),
     data = list(
