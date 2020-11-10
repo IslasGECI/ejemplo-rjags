@@ -2,10 +2,10 @@ Package: geci.rjags
 Title: Ejemplo rjags
 Version: 0.1.0
 Authors@R: 
-    person(given = "Genaro",
-           family = "Velázquez",
+    person(given = "Nepo",
+           family = "Rojas",
            role = c("aut", "cre"),
-           email = "genaro.velazquez@islas.org.mx"
+           email = "nepo.rojas@islas.org.mx"
            )
 Description: Ajusta una línea recta usando rjags
 Imports: rjags
