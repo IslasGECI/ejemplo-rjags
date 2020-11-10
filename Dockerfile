@@ -1,4 +1,4 @@
-FROM r-base:4.0.2
+FROM r-base:4.0.3
 WORKDIR /workdir
 COPY . /workdir
 RUN apt-get update && apt-get install --yes \
@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install --yes \
     libxml2-dev \
     r-cran-rjags \
     texlive
-RUN R -e "install.packages(c('covr','devtools','jsonify','lintr','optparse','testthat','tidyverse'), repos='http://cran.rstudio.com')"
+RUN R -e "install.packages(c('covr', 'devtools', 'jsonify', 'lintr', 'optparse', 'styler', 'testthat', 'tidyverse'), repos='http://cran.rstudio.com')"
 RUN R -e "devtools::install_github('klutometis/roxygen', upgrade = FALSE)"
 RUN R -e "devtools::document()" && \
     R CMD build . && \
