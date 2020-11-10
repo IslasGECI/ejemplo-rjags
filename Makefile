@@ -3,6 +3,12 @@ all: \
 	tests \
 	coverage
 
+define runLint
+	R -e "library(lintr)" \
+	  -e "lint_dir('R', linters = with_defaults(line_length_linter(100)))" \
+	  -e "lint_dir('tests/testthat', linters = with_defaults(line_length_linter(100)))"
+endef
+
 .PHONY: all clean coverage lint tests
 
 clean:
@@ -16,7 +22,8 @@ format:
 	  -e "style_dir('tests')" \
 	  -e "style_dir('R')"
 lint:
-	R -e "lintr::lint('R/make_fit.R', linters = with_defaults(line_length_linter(100)))"
+	$(runLint)
+	$(runLint) | grep -e "\^" && exit 1 || exit 0
 
 tests:
 	R -e "testthat::test_dir('tests/testthat/', report = 'summary', stop_on_failure = TRUE)" \
