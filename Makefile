@@ -22,7 +22,8 @@ clean:
 	rm *.tar.gz
 
 coverage:
-	R -e "covr::file_coverage(c('R/make_fit.R'),c('tests/testthat/test_make_fit.R'))"
+	R -e "cobertura <- covr::file_coverage(c('R/make_fit.R'), c('tests/testthat/test_make_fit.R'))" \
+	  -e "covr::codecov(covertura=cobertura, token='7c66844a-93d6-4a2a-82ad-c85bf971e6d2')"
 
 format:
 	R -e "library(styler)" \
