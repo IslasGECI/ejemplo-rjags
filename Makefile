@@ -21,8 +21,8 @@ check:
 clean:
 	rm *.tar.gz
 
-coverage: tests
-	R -e "covr::package_coverage()"
+coverage:
+	R -e "covr::file_coverage(c('R/make_fit.R'),c('tests/testthat/test_make_fit.R'))"
 
 format:
 	R -e "library(styler)" \
@@ -34,5 +34,4 @@ linter:
 	$(lint) | grep -e "\^" && exit 1 || exit 0
 
 tests:
-	R -e "testthat::test_dir('tests/testthat/', report = 'summary', stop_on_failure = TRUE)" \
-	  -e "devtools::test()"
+	R -e "testthat::test_dir('tests/testthat/', report = 'summary', stop_on_failure = TRUE)"
