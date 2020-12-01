@@ -1,3 +1,6 @@
+![Conservación de Islas](https://github.com/IslasGECI/ejemplo-rjags-clase1/workflows/Conservaci%C3%B3n%20de%20Islas/badge.svg)
+[![codecov](https://codecov.io/gh/IslasGECI/ejemplo-rjags-clase1/branch/develop/graph/badge.svg?token=W0MW1ITBRJ)](https://codecov.io/gh/IslasGECI/ejemplo-rjags-clase1)
+
 # Ejemplo sobre rjags
 
 ## Historial de este repositorio
