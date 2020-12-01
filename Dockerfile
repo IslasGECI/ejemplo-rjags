@@ -2,6 +2,7 @@ FROM r-base:4.0.3
 WORKDIR /workdir
 COPY . /workdir
 RUN apt-get update && apt-get install --yes \
+    git \
     libcurl4-openssl-dev \
     libssl-dev \
     libxml2-dev \
