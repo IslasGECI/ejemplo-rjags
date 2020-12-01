@@ -13,8 +13,10 @@ endef
 
 check:
 	R -e "library(styler)" \
-	  -e "style_dir('tests')" \
-	  -e "style_dir('R')"
+	  -e "resumen <- style_dir('tests')" \
+	  -e "resumen <- rbind(resumen, style_dir('R'))" \
+	  -e "any(resumen[[2]])" \
+	  | grep FALSE
 
 clean:
 	rm *.tar.gz
