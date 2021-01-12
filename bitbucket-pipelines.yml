@@ -1,8 +1,0 @@
-image: islasgeci/ejemplo-rjags:18b7
-
-pipelines:
-  custom:
-    manual:
-      - step:
-          script:
-            - make
