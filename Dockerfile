@@ -8,9 +8,10 @@ RUN apt-get update && apt-get install --yes \
     libxml2-dev \
     r-cran-rjags \
     texlive
-RUN R -e "install.packages(c('covr', 'devtools', 'jsonify', 'lintr', 'optparse', 'styler', 'testthat', 'tidyverse'), repos='http://cran.rstudio.com')"
-RUN R -e "devtools::install_github('klutometis/roxygen', upgrade = FALSE)"
-RUN R -e "devtools::document()" && \
+RUN R -e "install.packages('devtools', repos='http://cran.rstudio.com')" \
+      -e "install.packages(c('covr', 'jsonify', 'lintr', 'optparse', 'styler', 'testthat', 'tidyverse'), repos='http://cran.rstudio.com')" \
+      -e "devtools::install_github('klutometis/roxygen', upgrade = FALSE)" \
+      -e "devtools::document()" && \
     R CMD build . && \
     R CMD check geci.rjags_0.1.0.tar.gz && \
     R CMD INSTALL geci.rjags_0.1.0.tar.gz
