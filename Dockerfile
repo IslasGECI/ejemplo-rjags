@@ -11,6 +11,6 @@ RUN apt-get update && apt-get install --yes \
 RUN R -e "install.packages(c('covr', 'devtools', 'jsonify', 'lintr', 'optparse', 'roxygen', 'styler', 'testthat', 'tidyverse'), repos='http://cran.rstudio.com')" \
       -e "devtools::document()" && \
     R CMD build . && \
-    R CMD check geci.rjags_0.1.0.tar.gz && \
-    R CMD INSTALL geci.rjags_0.1.0.tar.gz
+    R CMD check geci.rjags_0.1.1.tar.gz && \
+    R CMD INSTALL geci.rjags_0.1.1.tar.gz
 CMD ["make"]
