@@ -1,7 +1,7 @@
 Package: geci.rjags
 Title: Ejemplo rjags
-Version: 0.1.0
-Authors@R: 
+Version: 0.1.1
+Authors@R:
     person(given = "Nepo",
            family = "Rojas",
            role = c("aut", "cre"),
